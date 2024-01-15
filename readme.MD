@@ -75,7 +75,7 @@ An example can be: `docs(Guidelines): Added initial files for documentation`
     make setup-hooks
 ```
 3. Commit your changes. When making a new commit, `pre-commit` will run linters on all staged files as for django. Resolve any remaining issues reported by the linters, stage the changed files and attempt to commit again until resolution.
-4. Locally merge (or rebase) the upstream branch into your topic branch: `$ git checkout <topic-branch-name> && git fetch upstream && git rebase upstream/GraphQL <topic-branch-name>`. The topic branch name should follow this convention of `<Jira Ticket Number> - <Title of the subtask>`. For eg say the ticket number is IPROPEL-12 and the subtask title is `Initializing the repository`. The branch name should be `HRMS-12-initializing-the-repository`. Note all the subtask title should all be in lowercase. Only the ticket number should be specified in the way it is.
+4. Locally merge (or rebase) the upstream branch into your topic branch: `$ git checkout <topic-branch-name> && git fetch upstream && git rebase upstream/GraphQL <topic-branch-name>`. The topic branch name should follow this convention of `<Jira Ticket Number> - <Title of the subtask>`. For eg say the ticket number is HRMS-12 and the subtask title is `Initializing the repository`. The branch name should be `HRMS-12-initializing-the-repository`. Note all the subtask title should all be in lowercase. Only the ticket number should be specified in the way it is.
 5. Push your topic branch up to your fork: `$ git push origin <topic-branch-name>`.
 6. Open a Pull Request with a clear title and description.
 ​
