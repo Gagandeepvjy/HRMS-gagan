@@ -2,8 +2,10 @@ exclude: .*migrations\/.*
 repos:
 - hooks:
   - id: commitizen
+  - id: commitizen-branch
     stages:
     - push
+    - commit-msg
   repo: https://github.com/commitizen-tools/commitizen
   rev: v3.13.0
 - hooks:
