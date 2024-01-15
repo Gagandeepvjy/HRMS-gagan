@@ -2,7 +2,7 @@
 
 Human Management Serv
 
-# Contributing To IPropel Identity Management Serv
+# Contributing To Human Resource Management Serv
 ​
 There is a whole lot of work to do and it needs to be done in manner such that is easily manageable and understanable. This allows us to create a stable application.
 Feel free to raise a pull request to [the main repository](https://github.com/Santhoshcv19/HRMS.git/-/merge_requests) . The maintainers would review your proposed modifications and, if appropriate, merge
