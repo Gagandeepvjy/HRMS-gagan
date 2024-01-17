@@ -94,4 +94,4 @@ Note: All the migration files associated with the backend changes will be ignore
 ​
 You will be all updated and ready to make new changes now
 ​
-If you have any questions about contributing, feel free to reach out the repository maintainers.
+If you have any questions about contributing, feel completely free to reach out the repository maintainers and get your doubts sorted.
