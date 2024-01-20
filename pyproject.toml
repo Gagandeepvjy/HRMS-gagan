@@ -19,7 +19,7 @@ ignore = ["E402","E501","W503"]
 
 [tool.pylint]
 load-plugins = ["pylint_django"]
-django-settings-module = "core.settings"
+django-settings-module = "portal.settings"
 
 [tool.pylint.MESSAGE_CONTROL]
 disable = """
@@ -62,13 +62,13 @@ tests = ["B201", "B301"]
 skips = ["B101", "B601"]
 
 [tool.pytest]
-DJANGO_SETTINGS_MODULE = "core.settings"
+DJANGO_SETTINGS_MODULE = "portal.settings"
 
 [tool.mypy]
 plugins = ["mypy_django_plugin.main","mypy_drf_plugin.main"]
 
 [tool.django-stubs]
-django_settings_module = "core.settings"
+django_settings_module = "portal.settings"
 
 
 
