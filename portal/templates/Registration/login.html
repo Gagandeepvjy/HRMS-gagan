@@ -1,0 +1,25 @@
+{% extends 'portal/base.html' %} {% block content %}
+
+<style>
+    .btn-primary:hover {
+    background-color: #f64c72;
+    border-color: #f64c72;
+    color: white;
+  }
+    .btn-primary{
+        border-color: #f64c72;
+        border-width: 0.1pc;
+    }
+</style>
+
+<div class="container" style="color: white; padding-top: 20px;">
+  <h2>Log In</h2>
+  <br>
+  {% load crispy_forms_tags %}
+  <form method="post">
+    {% csrf_token %} {{ form|crispy }}
+    <br>
+    <button type="submit" class="btn btn-primary">Log In</button>
+  </form>
+</div>
+{% endblock %}
