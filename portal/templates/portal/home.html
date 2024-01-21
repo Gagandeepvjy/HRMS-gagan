@@ -1,0 +1,19 @@
+{% extends 'portal/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="bg-primary" style="display: flex; height: 100%;">
+    <div class="left" style="width: 50%; flex: 1;text-align: center; margin-top: 9%;">
+        <p style="font-size: 150%;">Human Resource Management System for</p>
+        <h1 style="font-size: 500%;">MINISTON ENGINEERING SERVICES</h1>
+        <br>
+        <button class="btn btn-success" style="width: 30%;">Get Started</button>
+    </div>
+    <div class="right" style="width: 50%; flex: 1;">
+        <img src="{% static 'portal/mainpage.png' %}" style="width: 80%;">
+    </div>
+</div>
+
+{% endblock %}
