@@ -39,8 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "portal",
-    # "crispy_forms",
-    # "crispy_bootstrap4",
+    "crispy_forms",
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
@@ -88,6 +87,7 @@ DATABASES = {
     }
 }
 
+AUTH_USER_MODEL = "portal.User"
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

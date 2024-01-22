@@ -1,19 +1,28 @@
 from django import forms
+from django.contrib.auth.forms import AuthenticationForm
 
-from .models import UserProfile
+from .models import User
 
 
-class SignUpForm(forms.ModelForm):
+class UserForm(forms.ModelForm):
     class Meta:
-        model = UserProfile
-        fields = [
+        model = User
+        fields = (
             "username",
+            "email",
+            "password",
             "user_profile",
             "mobile_number",
-            "email",
             "address",
             "dob",
-        ]
+        )
         widgets = {
+            "password": forms.PasswordInput(render_value=False),
             "dob": forms.DateInput(attrs={"class": "datepicker"}),
         }
+
+
+class CustomAuthenticationForm(AuthenticationForm):
+    class Meta:
+        model = User
+        fields = ["username", "password"]

@@ -66,6 +66,7 @@ repos:
     - django-autoslug
     - django-cors-headers
     - drf-yasg[validation]
+    - django-crispy-forms
     args:
     - --no-strict-optional
     - --ignore-missing-imports
