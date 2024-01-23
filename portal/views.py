@@ -17,6 +17,13 @@ def signup(request):
             new_user = user_form.save(commit=False)
             new_user.set_password(user_form.cleaned_data["password"])
             user_form.save()
+            user = authenticate(
+                request,
+                username=new_user.username,
+                password=user_form.cleaned_data["password"],
+            )
+            if user is not None:
+                login(request, user)
             return redirect("home")
     else:
         user_form = UserForm()
