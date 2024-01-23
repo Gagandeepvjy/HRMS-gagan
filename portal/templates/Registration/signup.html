@@ -86,7 +86,7 @@
         <div class="form-section">
             <h2>Sign Up</h2>
             <br>
-            <form method="post" enctype="multipart/form-data">
+            <form method="post" enctype="multipart/form-data" style="position: relative; right: 110px;">
                 {% csrf_token %}
                 {{ user_form|crispy }}
                 <button type="submit" class="btn btn-outline-primary mt-3">Sign Up</button>
