@@ -5,6 +5,11 @@ from .models import User
 
 
 class UserForm(forms.ModelForm):
+    dob = forms.DateField(
+        input_formats=["%d-%m-%Y"],
+        widget=forms.DateInput(attrs={"class": "datepicker", "format": "%d-%m-%Y"}),
+    )
+
     class Meta:
         model = User
         fields = (
