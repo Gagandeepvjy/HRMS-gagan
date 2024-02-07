@@ -15,7 +15,7 @@ class Profile(models.Model):
         ("manager", "Manager"),
         ("employee", "Employee"),
     ]
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     department = models.CharField(max_length=50)
     designation = models.CharField(max_length=50)
     role = models.CharField(max_length=10, choices=ROLE_CHOICES)
