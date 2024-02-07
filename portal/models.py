@@ -21,5 +21,5 @@ class Profile(models.Model):
     role = models.CharField(max_length=10, choices=ROLE_CHOICES)
     join_date = models.DateField()
     is_delete = models.IntegerField()
-    deleted_at = models.DateTimeField()
+    deleted_at = models.DateTimeField(blank=True, null=True)
     created_at = models.DateTimeField()
