@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from django.shortcuts import redirect, render
 
@@ -39,7 +40,7 @@ def login_view(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect("home")
+                return redirect("base")
     else:
         user_form = CustomAuthenticationForm(request)
     return render(request, "Registration/login.html", {"user_form": user_form})
@@ -48,3 +49,20 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect("home")
+
+
+def manager_page(request):
+    return render(request, "portal/manager_page.html")
+
+
+def employee_page(request):
+    return render(request, "portal/employee_page.html")
+
+
+@login_required
+def base(request):
+    if request.user.is_authenticated:
+        if request.user.profile.role == "manager":
+            return redirect("manager_page")
+        return redirect("employee_page")
+    return render(request, "login.html")
