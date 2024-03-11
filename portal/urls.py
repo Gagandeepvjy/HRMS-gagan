@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import include, path
 
 from . import views
 
@@ -12,4 +12,6 @@ urlpatterns = [
     # Role
     path("employee_page", views.employee_page, name="employee_page"),
     path("manager_page", views.manager_page, name="manager_page"),
+    # Api
+    path("api/", include("api.urls")),
 ]
