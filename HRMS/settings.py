@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     "portal",
     "crispy_forms",
     "crispy_bootstrap4",
+    "api",
+    "rest_framework",
+    "rest_framework.authtoken",
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
