@@ -23,3 +23,20 @@ class Profile(models.Model):
     is_delete = models.IntegerField()
     deleted_at = models.DateTimeField(blank=True, null=True)
     created_at = models.DateTimeField()
+
+
+class LeaveRequest(models.Model):
+    Leave_Choices = [
+        ("approved", "Approved"),
+        ("pending", "Pending"),
+        ("denied", "Denied"),
+    ]
+    leave_id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    leave_type = models.CharField(max_length=50)
+    from_date = models.DateField()
+    to_date = models.DateField()
+    leave_status = models.CharField(
+        max_length=15, choices=Leave_Choices, default="pending"
+    )
+    comments = models.CharField(max_length=255, null=True, blank=True)

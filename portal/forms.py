@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 
-from .models import User
+from .models import LeaveRequest, User
 
 
 class UserForm(forms.ModelForm):
@@ -31,3 +31,9 @@ class CustomAuthenticationForm(AuthenticationForm):
     class Meta:
         model = User
         fields = ["username", "password"]
+
+
+class LeaveRequestForm(forms.ModelForm):
+    class Meta:
+        model = LeaveRequest
+        fields = ["leave_type", "from_date", "to_date"]

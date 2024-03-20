@@ -1,0 +1,14 @@
+{% extends 'portal/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<form method="post" enctype="multipart/form-data" style="position: relative;">
+    {% csrf_token %}
+    {{ leave_form }}
+    <button type="submit" class="btn btn-outline-warning mt-3">Apply Leave</button>
+    <br>
+</form>
+
+{% endblock %}

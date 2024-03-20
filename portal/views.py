@@ -1,9 +1,30 @@
+from functools import wraps
+
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from django.shortcuts import redirect, render
 
-from .forms import CustomAuthenticationForm, UserForm
+from .forms import CustomAuthenticationForm, LeaveRequestForm, UserForm
+from .models import LeaveRequest, Profile
+
+
+def role_required(role):
+    def decorator(view_func):
+        @wraps(view_func)
+        def wrapper(request, *args, **kwargs):
+            if not request.user.is_authenticated:
+                return redirect("login_view")
+
+            profile = Profile.objects.get(user=request.user)
+            if profile.role != role:
+                return redirect("home")
+
+            return view_func(request, *args, **kwargs)
+
+        return wrapper
+
+    return decorator
 
 
 def home(request):
@@ -51,10 +72,34 @@ def logout_view(request):
     return redirect("home")
 
 
+@role_required("manager")
+def manager_leave_approval(request):
+    leave_requests = LeaveRequest.objects.all()
+    return render(
+        request,
+        "portal/manager_leave_approval.html",
+        {"leave_requests": leave_requests},
+    )
+
+
+@role_required("employee")
+def employee_leave_request(request):
+    if request.method == "POST":
+        leave_form = LeaveRequestForm(request.POST)
+        if leave_form.is_valid():
+            leave_form.save()
+    leave_form = LeaveRequestForm()
+    return render(
+        request, "portal/employee_leave_request.html", {"leave_form": leave_form}
+    )
+
+
+@role_required("manager")
 def manager_page(request):
     return render(request, "portal/manager_page.html")
 
 
+@role_required("employee")
 def employee_page(request):
     return render(request, "portal/employee_page.html")
 

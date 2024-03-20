@@ -14,4 +14,15 @@ urlpatterns = [
     path("manager_page", views.manager_page, name="manager_page"),
     # Api
     path("api/", include("api.urls")),
+    # Functionalities
+    path(
+        "manager_page/leave_approval",
+        views.manager_leave_approval,
+        name="manager_leave_approval",
+    ),
+    path(
+        "employee_page/leave_request",
+        views.employee_leave_request,
+        name="employee_leave_request",
+    ),
 ]

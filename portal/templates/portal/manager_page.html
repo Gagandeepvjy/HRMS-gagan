@@ -12,6 +12,7 @@
         <p><strong>Address:</strong> {{ user.address }}</p>
         <p><strong>Date of Birth:</strong> {{ user.dob }}</p>
     </div>
+    <a href="{% url 'manager_leave_approval' %}"><button class="btn btn-outline-primary">Check Leave Request</button></a>
 </div>
 <style>
     .container {
