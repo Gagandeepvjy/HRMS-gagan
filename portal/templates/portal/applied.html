@@ -3,18 +3,10 @@
 {% load static %}
 
 {% block content %}
-<div class="container">
-    <h1>Welcome, Employee!</h1>
-    <div class="details">
-        <p><strong>Username:</strong> {{ user.username }}</p>
-        <p><strong>Email:</strong> {{ user.email }}</p>
-        <p><strong>Mobile Number:</strong> {{ user.mobile_number }}</p>
-        <p><strong>Address:</strong> {{ user.address }}</p>
-        <p><strong>Date of Birth:</strong> {{ user.dob }}</p>
-    </div>
-    <div class="leave-status">
-        <button onclick="location.href='{% url 'employee_request_status' %}'">Check Leave Status</button>
-    </div>
+<h1>Your leave request has been submitted.</h1>
+<div class="leave-status">
+    <button onclick="location.href='{% url 'employee_request_status' %}'">Check Leave Status</button>
+</div>
 </div>
 <style>
     .container {
@@ -39,15 +31,15 @@
         text-align: center;
     }
     .leave-status button {
-        background-color: #007bff;
-        color: #fff;
+        background-color: #fafafa;
+        color: #000000;
         border: none;
         border-radius: 5px;
         padding: 10px 20px;
         cursor: pointer;
     }
     .leave-status button:hover {
-        background-color: #0056b3;
+        background-color: #a4a4a4;
     }
 </style>
 {% endblock %}

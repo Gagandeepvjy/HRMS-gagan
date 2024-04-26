@@ -7,6 +7,8 @@
 <form method="post" enctype="multipart/form-data" style="position: relative;">
     {% csrf_token %}
     {{ leave_form }}
+    <input type="hidden" name="user_id" value="{{ request.user.id }}">
+    <!-- Add a hidden field to pass user_id -->
     <button type="submit" class="btn btn-outline-warning mt-3">Apply Leave</button>
     <br>
 </form>
