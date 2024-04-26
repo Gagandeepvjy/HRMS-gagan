@@ -25,4 +25,14 @@ urlpatterns = [
         views.employee_leave_request,
         name="employee_leave_request",
     ),
+    path(
+        "employee_page/request_status",
+        views.employee_request_status,
+        name="employee_request_status",
+    ),
+    path(
+        "employee_page/applied",
+        views.employee_applied,
+        name="employee_applied",
+    ),
 ]

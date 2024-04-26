@@ -72,6 +72,19 @@ def logout_view(request):
     return redirect("home")
 
 
+def employee_request_status(request):
+    leave_requests = LeaveRequest.objects.all()
+    return render(
+        request,
+        "portal/status.html",
+        {"leave_requests": leave_requests},
+    )
+
+
+def employee_applied(request):
+    return render(request, "portal/applied.html")
+
+
 @role_required("manager")
 def manager_leave_approval(request):
     leave_requests = LeaveRequest.objects.all()
@@ -82,13 +95,18 @@ def manager_leave_approval(request):
     )
 
 
-@role_required("employee")
+@login_required
 def employee_leave_request(request):
     if request.method == "POST":
         leave_form = LeaveRequestForm(request.POST)
         if leave_form.is_valid():
-            leave_form.save()
-    leave_form = LeaveRequestForm()
+            # Assign user_id to the form's instance before saving
+            leave_request = leave_form.save(commit=False)
+            leave_request.user_id = request.user.id
+            leave_request.save()
+            return redirect("employee_applied")  # Redirect to a success URL
+    else:
+        leave_form = LeaveRequestForm()
     return render(
         request, "portal/employee_leave_request.html", {"leave_form": leave_form}
     )

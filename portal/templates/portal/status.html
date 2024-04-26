@@ -1,0 +1,22 @@
+{% extends 'portal/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container row pt-4">
+    {% for leave in leave_requests %}
+       <div class='col-12 col-md-3 col-lg-3' style="display: flex;" >
+        <p class="text-center" style="margin-right: 20px;"><strong>{{ leave.leave_id }}</strong></p>
+        <p class="text-center" style="margin-right: 20px;"><strong>{{ leave.user }}</strong></p>
+        <p class="text-center" style="margin-right: 20px;"><strong>{{ leave.leave_type }}</strong></p>
+        <p class="text-center" style="margin-right: 20px;"><strong>{{ leave.from_date }}</strong></p>
+        <p class="text-center" style="margin-right: 20px;"><strong>{{ leave.to_date }}</strong></p>
+        <p class="text-center" style="margin-right: 20px;"><strong>{{ leave.leave_status }}</strong></p>
+       </div>
+    {% empty %}
+    <p>No leave in your catalog.</p>
+    {% endfor %}
+    </div>
+
+{% endblock %}
