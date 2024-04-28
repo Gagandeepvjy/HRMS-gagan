@@ -1,9 +1,9 @@
-{% extends 'portal/base.html' %}
+<!-- manager_leave_approval.html -->
 
+{% extends 'portal/base.html' %}
 {% load static %}
 
 {% block content %}
-
 <div class="container row pt-4">
     {% for leave in leave_requests %}
        <div class='col-12 col-md-3 col-lg-3' style="display: flex;" >
@@ -13,10 +13,20 @@
         <p class="text-center" style="margin-right: 20px;"><strong>{{ leave.from_date }}</strong></p>
         <p class="text-center" style="margin-right: 20px;"><strong>{{ leave.to_date }}</strong></p>
         <p class="text-center" style="margin-right: 20px;"><strong>{{ leave.leave_status }}</strong></p>
+        {% if leave.leave_status == 'pending' %}
+            <form method="post" action="{% url 'approve_leave_request' leave.leave_id %}">
+                {% csrf_token %}
+                <button type="submit">Approve</button>
+            </form>
+            <form method="post" action="{% url 'deny_leave_request' leave.leave_id %}">
+                {% csrf_token %}
+                <textarea name="manager_comments" rows="3" placeholder="Manager Comments" required></textarea>
+                <button type="submit">Deny</button>
+            </form>
+        {% endif %}
        </div>
     {% empty %}
     <p>No leave in your catalog.</p>
     {% endfor %}
-    </div>
-
+</div>
 {% endblock %}
