@@ -37,3 +37,11 @@ class LeaveRequestForm(forms.ModelForm):
     class Meta:
         model = LeaveRequest
         fields = ["leave_type", "from_date", "to_date"]
+
+
+class LeaveDenialForm(forms.ModelForm):
+    class Meta:
+        model = LeaveRequest
+        fields = ["manager_comments"]
+        labels = {"manager_comments": "Manager Comments"}
+        widgets = {"manager_comments": forms.Textarea(attrs={"rows": 3})}

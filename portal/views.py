@@ -3,7 +3,7 @@ from functools import wraps
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import CustomAuthenticationForm, LeaveRequestForm, UserForm
 from .models import LeaveRequest, Profile
@@ -129,3 +129,25 @@ def base(request):
             return redirect("manager_page")
         return redirect("employee_page")
     return render(request, "login.html")
+
+
+def approve_leave_request(request, leave_id):
+    leave_request = get_object_or_404(LeaveRequest, leave_id=leave_id)
+    leave_request.leave_status = "approved"
+    leave_request.save()
+    return redirect("manager_leave_approval")
+
+
+# def deny_leave_request(request, leave_id):
+#     leave_request = get_object_or_404(LeaveRequest, leave_id=leave_id)
+#     leave_request.leave_status = 'denied'
+#     leave_request.save()
+#     return redirect('manager_leave_approval')
+# views.py
+def deny_leave_request(request, leave_id):
+    if request.method == "POST":
+        leave_request = get_object_or_404(LeaveRequest, leave_id=leave_id)
+        leave_request.manager_comments = request.POST.get("manager_comments")
+        leave_request.leave_status = "denied"
+        leave_request.save()
+    return redirect("manager_leave_approval")  # Corrected redirection

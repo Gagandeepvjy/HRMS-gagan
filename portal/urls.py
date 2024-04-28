@@ -35,4 +35,19 @@ urlpatterns = [
         views.employee_applied,
         name="employee_applied",
     ),
+    path(
+        "manager_page/leave_approval",
+        views.manager_leave_approval,
+        name="manager_leave_approval",
+    ),
+    path(
+        "manager_page/approve_leave/<int:leave_id>",
+        views.approve_leave_request,
+        name="approve_leave_request",
+    ),
+    path(
+        "manager_page/deny_leave/<int:leave_id>",
+        views.deny_leave_request,
+        name="deny_leave_request",
+    ),
 ]
