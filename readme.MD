@@ -19,9 +19,6 @@ $ git clone [path_to_your_fork]
 # Change directory
 $ cd vpropel-v2
 ​
-# Add the upstream repo
-$ git remote add upstream git@github.com:Santhoshcv19/HRMS.git
-```
 
 2. Configuring Environment
 
